@@ -17,7 +17,7 @@ Funções de sincronia entre listboxes e sincronia entre o índice do lexema e o
 
 # To-do list
 - ~~Criar tabela de identificadores~~
-- ~~Remanejar comentários para outro lugar (não são lexemas)
+- ~~Remanejar comentários para outro lugar (não são lexemas)~~
 - Expandir pra outros lexemas
 
 
