@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-//AnalisadorLexico
+
 namespace AnalisadorLexico
 {
     public partial class Form1 : Form
@@ -47,14 +49,13 @@ namespace AnalisadorLexico
             int l = 1, pos = 1, somapos = 0, posQL = 1;
             int caso = 0;
             string CodFonte = rtbCodigoFonte.Text;
+            List<string> listaLexemas = new List<string>();
             progressBar1.Value = 0;
             progressBar1.Maximum = CodFonte.Length;
             progressBar1.Visible = true;
 
             #endregion
-
-
-
+            
             #region Regex geral
 
 
@@ -108,6 +109,7 @@ namespace AnalisadorLexico
                     {
                         lbLexema.Items.Add(CodFonte.Substring(Match.Index, Match.Length));
                         lbIndex.Items.Add(Match.Index);
+                        listaLexemas.Add(CodFonte.Substring(Match.Index, Match.Length));
                         caso = 1;
                     }
                 }
@@ -131,6 +133,7 @@ namespace AnalisadorLexico
                 {
                     lbLexema.Items.Add(CodFonte.Substring(Match.Index, Match.Length));
                     lbIndex.Items.Add(Match.Index);
+                    listaLexemas.Add(CodFonte.Substring(Match.Index, Match.Length));
                     caso = 5;
                 }
                 else if (caso != 1 && caso != 6 && matchIdentificadorLatino.Success)
@@ -145,6 +148,7 @@ namespace AnalisadorLexico
                     {
                         lbLexema.Items.Add(CodFonte.Substring(Match.Index, Match.Length));
                         lbIndex.Items.Add(Match.Index);
+                        listaLexemas.Add(CodFonte.Substring(Match.Index, Match.Length));
                         caso = 5;
                     }
                 }
@@ -164,8 +168,8 @@ namespace AnalisadorLexico
                 }
                 else if (matchComentario.Success)
                 {
-                    lbLexema.Items.Add(CodFonte.Substring(Match.Index, Match.Length));
-                    lbIndex.Items.Add(Match.Index);
+                    //lbLexema.Items.Add(CodFonte.Substring(Match.Index, Match.Length));
+                    //lbIndex.Items.Add(Match.Index);
                     caso = 3;
                     if (Match.ToString().Contains("/*"))
                     {
@@ -213,6 +217,7 @@ namespace AnalisadorLexico
                     {
                         lbLexema.Items.Add(CodFonte.Substring(Match.Index, Match.Length));
                         lbIndex.Items.Add(Match.Index);
+                        listaLexemas.Add(CodFonte.Substring(Match.Index, Match.Length));
                         caso = 5;
                     }
                 }
@@ -231,7 +236,7 @@ namespace AnalisadorLexico
                         lbErro.Items.Add(String.Format("L: {0}, pos: {1}  {2}", l, pos, Match.ToString()));
                         break;
                     case 3:
-                        lbIdent.Items.Add(String.Format("L: {0}, pos: {1} - Comentario", l, pos));
+                        //lbIdent.Items.Add(String.Format("L: {0}, pos: {1} - Comentario", l, pos));
                         break;
                     case 4:
                         // lbIdent.Items.Add(String.Format("L: {0}, pos: {1} - Outro", l, pos));
@@ -258,6 +263,23 @@ namespace AnalisadorLexico
             }
 
             progressBar1.Value = CodFonte.Length;
+
+            #region Criando datagrid com tabela de identificadores
+            var grupoDeLexemas = listaLexemas.GroupBy(s => s).Select(
+                s => new { Chaves = s.Key, Valores = s.Count() });
+            var dicionarioDeLexemas = grupoDeLexemas.ToDictionary(g => g.Chaves, g => g.Valores);
+            //var linhasDoDicionarioDeLexemas = from linha in dicionarioDeLexemas
+            //    select new { Lexema = linha.Key, Quantidade = linha.Value };
+            var listaDeLexemas = dicionarioDeLexemas.ToList();
+            listaDeLexemas.Sort((pair1, pair2) => pair2.Value.CompareTo(pair1.Value));
+
+            dataGridView1.DataSource = listaDeLexemas.ToArray();
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.Columns[0].HeaderText = "Lexemas";
+            dataGridView1.Columns[1].HeaderText = "Quantidade";
+
+
+            #endregion
 
             #region Comentarios
 

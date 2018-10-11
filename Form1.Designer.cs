@@ -40,6 +40,9 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.lbIndex = new System.Windows.Forms.ListBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // rtbCodigoFonte
@@ -65,7 +68,7 @@
             this.lbLexema.FormattingEnabled = true;
             this.lbLexema.Location = new System.Drawing.Point(383, 54);
             this.lbLexema.Name = "lbLexema";
-            this.lbLexema.Size = new System.Drawing.Size(266, 303);
+            this.lbLexema.Size = new System.Drawing.Size(197, 303);
             this.lbLexema.TabIndex = 2;
             this.lbLexema.SelectedIndexChanged += new System.EventHandler(this.lbLexema_SelectedIndexChanged);
             this.lbLexema.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbLexema_MouseMove);
@@ -73,25 +76,25 @@
             // lbIdent
             // 
             this.lbIdent.FormattingEnabled = true;
-            this.lbIdent.Location = new System.Drawing.Point(655, 54);
+            this.lbIdent.Location = new System.Drawing.Point(586, 54);
             this.lbIdent.Name = "lbIdent";
-            this.lbIdent.Size = new System.Drawing.Size(266, 303);
+            this.lbIdent.Size = new System.Drawing.Size(197, 303);
             this.lbIdent.TabIndex = 3;
             this.lbIdent.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbIdent_MouseMove);
             // 
             // lbErro
             // 
             this.lbErro.FormattingEnabled = true;
-            this.lbErro.Location = new System.Drawing.Point(927, 54);
+            this.lbErro.Location = new System.Drawing.Point(789, 54);
             this.lbErro.Name = "lbErro";
-            this.lbErro.Size = new System.Drawing.Size(266, 303);
+            this.lbErro.Size = new System.Drawing.Size(197, 303);
             this.lbErro.TabIndex = 4;
             this.lbErro.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbErro_MouseMove);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(494, 27);
+            this.label1.Location = new System.Drawing.Point(459, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 5;
@@ -100,7 +103,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(756, 27);
+            this.label2.Location = new System.Drawing.Point(652, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 13);
             this.label2.TabIndex = 6;
@@ -109,7 +112,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1047, 28);
+            this.label3.Location = new System.Drawing.Point(874, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 7;
@@ -132,11 +135,32 @@
             this.progressBar1.TabIndex = 9;
             this.progressBar1.Visible = false;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(992, 54);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(200, 303);
+            this.dataGridView1.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1029, 35);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(127, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Tabela de Identificadores";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1215, 391);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lbIndex);
             this.Controls.Add(this.label3);
@@ -149,6 +173,7 @@
             this.Controls.Add(this.rtbCodigoFonte);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,6 +192,8 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ListBox lbIndex;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label4;
     }
 }
 
