@@ -1,7 +1,7 @@
 # AnalisadorLexico
 Analisador Léxico de identificadores, palavras reservadas e comentários usando expressões regulares.
 
-![alt text](https://i.imgur.com/oSOjWGm.jpg "Exemplo")
+![alt text](https://i.imgur.com/VKNQTwc.png "Exemplo")
 
 # Dependências
 - Visual Studio
@@ -16,7 +16,8 @@ Lexemas são tratados por casos nas capturas das expressões regulares.
 Funções de sincronia entre listboxes e sincronia entre o índice do lexema e o richtextbox estão incluídos.
 
 # To-do list
-- Criar tabela de identificadores
-- Remanejar comentários para outro lugar (não são lexemas)
+- ~~Criar tabela de identificadores~~
+- ~~Remanejar comentários para outro lugar (não são lexemas)
+- Expandir pra outros lexemas
 
 
